@@ -188,10 +188,10 @@ public class EmployeeService {
         }
     }
 
-    public void deleteEmployee (EmployeeDTO employee) throws EmployeeException
+    public void deleteEmployee (int id) throws EmployeeException
     {
         EmployeeEntity entity = employeeRepo
-        .findById(employee.getId())
+        .findById(id)
         .orElseThrow(
             ()-> new EmployeeException("There Is No Employee With This ..."));
             employeeRepo.delete(entity);
@@ -250,7 +250,7 @@ public class EmployeeService {
     }
 
 
-    public List<EmployeeQueryDTO> querymobileEmployee(String sp) throws EmployeeQueryException
+    public List<EmployeeQueryDTO> querymobileEmployee() throws EmployeeQueryException
     {
         List<EmployeeQueryDTO> list = employeeRepo.mobileEmployeeList();
         if(list.size() != 0){

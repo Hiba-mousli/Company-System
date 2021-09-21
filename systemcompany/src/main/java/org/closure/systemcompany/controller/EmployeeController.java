@@ -77,12 +77,12 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value= "/deleteEmployee" , method=RequestMethod.POST)
-    public Object deleteEmployee (@RequestBody EmployeeDTO employee)
+    @RequestMapping(value= "/deleteEmployee/{num}" , method=RequestMethod.GET)
+    public Object deleteEmployee (@PathVariable(name = "num") int id)
     {
 
         try{
-            employeeService.deleteEmployee(employee);
+            employeeService.deleteEmployee(id);
             throw new EmployeeException("Delet Done ");
         }
         catch(EmployeeException e){
@@ -102,8 +102,8 @@ public class EmployeeController {
         }
     }
     
-    @RequestMapping(value= "/showAllEmployees" , method=RequestMethod.POST)
-    public Object showAllEmployees (@RequestBody EmployeeDTO employee)
+    @RequestMapping(value= "/showAllEmployees" , method=RequestMethod.GET)
+    public Object showAllEmployees ()
     {
 
         try{
@@ -125,9 +125,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(value="/showEmployee_mobilespecialty", method=RequestMethod.GET)
-    public List<EmployeeQueryDTO> mobileEmployee(@PathVariable(name = "num") String sp) {
+    public List<EmployeeQueryDTO> mobileEmployee() {
         try{
-            return employeeService.querymobileEmployee(sp);
+            return employeeService.querymobileEmployee();
         }
         catch(EmployeeQueryException e){
             return new ArrayList<>();
