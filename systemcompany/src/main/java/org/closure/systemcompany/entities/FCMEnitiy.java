@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="firebase")
-public class FirebaseEnitiy {
+public class FCMEnitiy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -25,10 +25,10 @@ public class FirebaseEnitiy {
     private String token;
 
 
-    public FirebaseEnitiy() {
+    public FCMEnitiy() {
     }
 
-    public FirebaseEnitiy(Integer id, EmployeeEntity employee, String token) {
+    public FCMEnitiy(Integer id, EmployeeEntity employee, String token) {
         this.id = id;
         this.employee = employee;
         this.token = token;
@@ -58,17 +58,17 @@ public class FirebaseEnitiy {
         this.token = token;
     }
 
-    public FirebaseEnitiy id(Integer id) {
+    public FCMEnitiy id(Integer id) {
         setId(id);
         return this;
     }
 
-    public FirebaseEnitiy employee(EmployeeEntity employee) {
+    public FCMEnitiy employee(EmployeeEntity employee) {
         setEmployee(employee);
         return this;
     }
 
-    public FirebaseEnitiy token(String token) {
+    public FCMEnitiy token(String token) {
         setToken(token);
         return this;
     }
@@ -77,10 +77,10 @@ public class FirebaseEnitiy {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof FirebaseEnitiy)) {
+        if (!(o instanceof FCMEnitiy)) {
             return false;
         }
-        FirebaseEnitiy firebaseEnitiy = (FirebaseEnitiy) o;
+        FCMEnitiy firebaseEnitiy = (FCMEnitiy) o;
         return Objects.equals(id, firebaseEnitiy.id) && Objects.equals(employee, firebaseEnitiy.employee) && Objects.equals(token, firebaseEnitiy.token);
     }
 
