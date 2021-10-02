@@ -1,10 +1,14 @@
  package org.closure.systemcompany.Services;
 
 import javax.annotation.PostConstruct;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream.GetField;
+import java.util.Objects;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -31,29 +35,34 @@ public class FCMService {
     @Bean
     public FirebaseMessaging init() throws IOException
     {
-       try{
-            FileInputStream serviceAccount =
-              new FileInputStream("C:/Users/ASUS/Documents/GitHub/Company-System/systemcompany/src/main/resources/credentials.json");
+      //  try{
+      //       FileInputStream serviceAccount =
+      //         new FileInputStream("C:/Users/ASUS/Documents/GitHub/Company-System/systemcompany/src/main/resources/credentials.json");
 
-              FirebaseOptions options = new FirebaseOptions.Builder()
-            .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            .setProjectId("my project id")
-            .setDatabaseUrl("my database url")
-            .build();
+      //       FirebaseOptions options = new FirebaseOptions.Builder()
+      //         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+      //         .build();
 
-            FirebaseApp.initializeApp(options);
-
-            // FirebaseOptions options = new FirebaseOptions.Builder()
-            //   .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            //   .build();
-
-            // FirebaseApp.initializeApp(options);
-           }
-       catch(Exception e){
-            e.printStackTrace();
-        }
+      //       FirebaseApp.initializeApp(options);
+      //      }
+      //  catch(Exception e){
+      //       e.printStackTrace();
+      //   }
        // initalize firebase app
 
+      //  try{
+      //  ClassLoader classLoader = FCMService.class.getClassLoader();
+      //  File file = new File(Objects.requireNonNull(classLoader.getResource("credentials.json")).getFile());
+      //  FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
+
+      //  FirebaseOptions options = new FirebaseOptions.Builder()
+      //                                               .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+      //                                               .build();
+      //  FirebaseApp.initializeApp(options);
+      //     }
+      //   catch(Exception e){
+      //     e.printStackTrace();
+      //   }  
 
         InputStream serviceAccount =
         resourceLoader.getResource("classpath:googlecred.json").getInputStream();
